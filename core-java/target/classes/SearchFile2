@@ -1,0 +1,4 @@
+Introduction. Akka is an open-source library that helps to easily develop concurrent 
+and distributed applications using Java or Scala by leveraging the Actor Model.
+In this tutorial, we'll present the basic features like defining actors, 
+how they communicate and how we can kill them
