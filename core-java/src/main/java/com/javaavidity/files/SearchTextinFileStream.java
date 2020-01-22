@@ -28,7 +28,13 @@ public class SearchTextinFileStream {
 		// Search in multiple files
 		DirectoryStream<Path> dirPath = Files.newDirectoryStream(Paths.get("src/main/resources"));
 
-		StreamSupport.stream(dirPath.spliterator(), true).filter(search::searchFile).findFirst();
+		Optional<Path> result = StreamSupport.stream(dirPath.spliterator(), true).filter(search::searchFile)
+				.findFirst();
+		if (result.isPresent()) {
+			System.out.println("Found ");
+		} else {
+			System.out.println("Not found");
+		}
 	}
 
 }
@@ -41,14 +47,9 @@ class Search {
 		try (Stream<String> lines = Files.lines(path).parallel()) {
 
 			Optional<String> line = lines.filter(s -> s.contains(searchTerm)).findFirst();
-			if (line.isPresent()) {
-				System.out.println("Found ");
-				return true;
-			} else {
-				System.out.println("Not found");
-				return false;
-			}
 
+			boolean result = line.isPresent() ? true : false;
+			return result;
 		} catch (Exception e) {
 			System.out.println("Error");
 			e.printStackTrace();
