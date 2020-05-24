@@ -13,7 +13,7 @@ import java.util.stream.StreamSupport;
 /**
  * 
  * @author ramakanth.b
- *
+ * Searching a text with in the single file or in multiple files
  */
 public class SearchTextinFileStream {
 
